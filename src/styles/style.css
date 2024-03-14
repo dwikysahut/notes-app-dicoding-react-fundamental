@@ -1,0 +1,369 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: white;
+  --on-background-grey: #c7c7c7;
+  --secondary: black;
+}
+
+[data-theme="light"] {
+  --primary: white;
+  --on-background-grey: #c7c7c7;
+  --secondary: black;
+}
+[data-theme="dark"] {
+  --primary: black;
+  --on-background-grey: #c7c7c7;
+  --secondary: white;
+}
+
+* {
+  padding: 0;
+
+  box-sizing: border-box;
+}
+p,
+h1,
+h2,
+h3 {
+  margin: 0 !important;
+}
+
+a {
+  color: var(--primary);
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+}
+html {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.app-container {
+  color: var(--primary);
+  background-color: var(--primary);
+  min-height: 100vh;
+  padding: 1rem;
+  transition: all ease-in-out 0.5s;
+}
+
+header {
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary);
+  padding: 16px;
+  border-bottom: 1px solid var(--secondary);
+}
+
+header h1 {
+  flex: 1;
+}
+
+header .navigation ul li {
+  display: inline-block;
+  font-size: 24px;
+  margin: 0 8px;
+}
+
+main {
+  margin: 0 auto;
+
+  width: 100%;
+}
+
+.notes-list {
+  margin-top: 32px;
+  display: grid;
+  height: fit-content;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  padding: 16px 8px;
+}
+
+.notes-list-empty {
+  margin-top: 32px;
+  padding: 16px 8px;
+}
+
+.notes-list-empty p {
+  text-align: center;
+  color: var(--on-background-grey);
+}
+.note-item {
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid var(--secondary);
+  border-top: 5px solid var(--secondary);
+}
+
+.note-item__title {
+  margin: 4px 0;
+  color: var(--secondary);
+}
+
+.note-item__createdAt {
+  color: var(--on-background-grey);
+  font-size: 14px;
+  margin: 4px 0;
+}
+.list-title {
+  color: var(--secondary);
+
+}
+.note-item__body {
+  margin-top: 16px;
+  overflow: hidden;
+  display: -webkit-box;
+  color: var(--secondary);
+
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 6;
+  text-align: justify;
+  -webkit-box-orient: vertical;
+}
+
+.detail-page {
+  margin: 0 auto;
+  padding: 32px;
+  min-height: 100vh;
+  color: var(--secondary);
+  background-color: var(--primary);
+}
+
+.detail-page__title {
+  font-size: 48px;
+  margin-bottom: 8px;
+  color: var(--secondary);
+
+  word-wrap: break-word;
+}
+
+.detail-page__createdAt {
+  color: var(--on-background-grey);
+}
+
+.detail-page__body {
+  line-height: 1.5;
+  margin-top: 36px;
+  font-size: 18px;
+}
+
+.detail-page__action,
+.homepage__action,
+.add-new-page__action {
+  position: fixed;
+  display: flex;
+  gap: 16px;
+  bottom: 32px;
+  right: 32px;
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  border: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  background-color: var(--primary);
+  color: var(--secondary);
+  padding: 8px;
+  cursor: pointer;
+}
+
+.add-new-page__input {
+  margin-top: 32px;
+}
+
+.add-new-page__input .add-new-page__input__title {
+  width: 100%;
+  background-color: transparent;
+  border: 0;
+  color: var(--secondary);
+  font-family: "Inter", sans-serif;
+  font-size: 64px;
+  font-weight: bold;
+  padding: 8px 0;
+}
+
+.add-new-page__input__title::placeholder {
+  color: var(--on-background-grey);
+}
+
+.add-new-page__input .add-new-page__input__body {
+  width: 100%;
+  background-color: transparent;
+  border: 0;
+  color: var(--primary);
+  font-family: "Inter", sans-serif;
+  font-size: 24px;
+  padding: 8px 0;
+  min-height: 500px;
+}
+
+[data-placeholder]:empty::before {
+  content: attr(data-placeholder);
+  color: var(--on-background-grey);
+}
+
+.search-bar input {
+  margin: 16px 0;
+  font-family: "Inter", sans-serif;
+  background-color: transparent;
+  border: 1px solid var(--secondary);
+  border-radius: 4px;
+  padding: 8px;
+  width: 100%;
+  color: var(--secondary);
+}
+
+.search-bar input::placeholder {
+  color: var(--on-background-grey);
+}
+
+.toggle-theme,
+.toggle-locale {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  color: var(--secondary);
+  display: flex;
+  align-items: center;
+  margin: 0 16px;
+}
+
+.toggle-theme {
+  font-size: 36px;
+}
+
+.toggle-locale {
+  font-size: 28px;
+}
+
+.input-login,
+.input-register {
+  margin: 32px 0;
+}
+
+.input-login label,
+.input-register label {
+  font-size: 24px;
+  font-weight: lighter;
+}
+
+.input-login input,
+.input-register input {
+  font-size: 18px;
+  font-family: "Inter", sans-serif;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  background-color: transparent;
+  border-radius: 8px;
+  border: 3px solid var(--secondary);
+  color: var(--primary);
+}
+
+.input-login button,
+.input-register button {
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  width: 100%;
+  padding: 12px;
+  border: 0;
+  border-radius: 8px;
+  background-color: var(--primary);
+  color: var(--secondary);
+  cursor: pointer;
+}
+
+.button-logout {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  border: 0;
+  font-size: 28px;
+  cursor: pointer;
+  color: var(--primary);
+}
+
+@media screen and (min-width: 650px) {
+  .notes-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .detail-page__title {
+    font-size: 64px;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  .notes-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .notes-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.body__card {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+.body__card > * {
+  font-size: 0.8rem;
+
+  margin: 0;
+}
+.date__card {
+  font-weight: 300;
+  font-size: 0.8rem;
+}
+
+.btn-add {
+  font-size: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-note__input {
+  min-height: 2rem;
+  height: auto;
+  padding: 1rem 2rem;
+  background-color: white;
+  color: black;
+  border: none;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.add-note__input:empty:before {
+  content: attr(data-placeholder);
+  color: grey;
+  pointer-events: none;
+  display: block; /* For Firefox */
+}
+
+.arsip__title {
+  color: var(--secondary);
+}

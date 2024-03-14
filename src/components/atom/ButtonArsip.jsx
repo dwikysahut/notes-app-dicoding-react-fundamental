@@ -1,0 +1,41 @@
+import React, { useContext } from "react";
+import PropTypes from "prop-types";
+import { Button, Spinner } from "reactstrap";
+import { BiSolidArchiveIn, BiSolidArchiveOut } from "react-icons/bi";
+import { LoadingContext } from "../../context/LoadingContext";
+import { ThemeContext } from "../../context/ThemeContext";
+
+export default function ButtonArchive({ isArchived, onClick }) {
+  const { isLoadingPost } = useContext(LoadingContext);
+  const { theme } = useContext(ThemeContext);
+  return (
+    <Button
+      className={`rounded-circle ${theme=='light'?'bg-black text-white':'bg-white text-black'}`}
+      style={{ width: "44px", height: "44px" }}
+      type="reset"
+      onClick={onClick}
+      disabled={isLoadingPost}
+    >
+      {isArchived ? (
+        isLoadingPost ? (
+          <Spinner size={"sm"} color="yellow">
+            Loading...
+          </Spinner>
+        ) : (
+          <BiSolidArchiveOut size={18} />
+        )
+      ) : isLoadingPost ? (
+        <Spinner size={"sm"} color="yellow">
+          Loading...
+        </Spinner>
+      ) : (
+        <BiSolidArchiveIn size={18} />
+      )}
+    </Button>
+  );
+}
+
+ButtonArchive.propTypes = {
+  isArchived: PropTypes.bool,
+  onClick: PropTypes.func.isRequired,
+};
